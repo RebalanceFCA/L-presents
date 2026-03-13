@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="light" style=""><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LINE登録特典 | リバランス整顔美容鍼</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;700&amp;family=Noto+Serif+JP:wght@400;600;900&amp;display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --bg-color: #fcfaf5;
+        --card-bg: #fffbf5;
+        --text-main: #4a4a4a;
+        --text-dark: #333333;
+        --gold-main: #d4a574;
+        --gold-dark: #c9a063;
+        --gold-light: #e6d2a0;
+        --btn-color: #2c2c2c; /* Dark charcoal/black for buttons */
+        --btn-text: #ffffff;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Shippori Mincho', 'Noto Serif JP', serif;
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        line-height: 1.8;
+        position: relative;
+        overflow-x: hidden;
+      }
+
+      /* === Background Patterns === */
+
+      /* Asanoha (Hemp Leaf) Pattern Overlay - Subtle */
+      body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image:
+          linear-gradient(30deg, transparent 48%, #eaddcf 49%, #eaddcf 51%, transparent 52%),
+          linear-gradient(150deg, transparent 48%, #eaddcf 49%, #eaddcf 51%, transparent 52%),
+          linear-gradient(90deg, transparent 48%, #eaddcf 49%, #eaddcf 51%, transparent 52%);
+        background-size: 40px 69px;
+        opacity: 0.15;
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      /* === Decorative Corners (Flowing Gold Curves) === */
+      /* Using CSS borders and radius to simulate organic brush strokes */
+
+      /* Top Left Curve */
+      .corner-tl {
+        position: fixed;
+        top: -50px;
+        left: -50px;
+        width: 200px;
+        height: 200px;
+        border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+        border: 3px solid var(--gold-main);
+        transform: rotate(-15deg);
+        z-index: 0;
+        opacity: 0.6;
+      }
+      .corner-tl::after {
+        content: '';
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        width: 100%;
+        height: 100%;
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        border: 1px solid var(--gold-light);
+      }
+
+      /* Top Right Asanoha Cluster */
+      .corner-tr {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 180px;
+        height: 180px;
+        background-image: radial-gradient(
+          circle at 100% 0%,
+          transparent 0%,
+          transparent 60%,
+          var(--gold-light) 60%,
+          var(--gold-light) 61%,
+          transparent 61%
+        );
+        opacity: 0.3;
+        z-index: 0;
+      }
+      .corner-tr::before {
+        content: '';
+        position: absolute;
+        top: -20px;
+        right: -20px;
+        width: 150px;
+        height: 150px;
+        border: 2px solid var(--gold-main);
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        transform: rotate(45deg);
+      }
+
+      /* Bottom Left Seigaiha (Wave) & Curve */
+      .corner-bl {
+        position: fixed;
+        bottom: -30px;
+        left: -30px;
+        width: 250px;
+        height: 150px;
+        z-index: 0;
+      }
+      .corner-bl-curve {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-top: 3px solid var(--gold-main);
+        border-radius: 100% 0 0 0;
+        transform: rotate(10deg);
+        opacity: 0.7;
+      }
+
+      /* Bottom Right Curve */
+      .corner-br {
+        position: fixed;
+        bottom: -50px;
+        right: -50px;
+        width: 300px;
+        height: 300px;
+        border-top: 4px solid var(--gold-main);
+        border-left: 2px solid var(--gold-light);
+        border-radius: 100% 0 0 0;
+        z-index: 0;
+        opacity: 0.5;
+      }
+
+      /* === Main Layout === */
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 60px 20px 40px;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* === Header === */
+      header {
+        text-align: center;
+        margin-bottom: 60px;
+      }
+
+      h1 {
+        font-size: 2.2rem;
+        font-weight: 900;
+        color: var(--text-dark);
+        margin-bottom: 30px;
+        line-height: 1.4;
+        text-shadow: 2px 2px 0px rgba(255, 255, 255, 0.8);
+      }
+
+      .intro-text {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--text-dark);
+        margin-bottom: 20px;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .intro-sub {
+        font-size: 1rem;
+        color: var(--text-main);
+        max-width: 650px;
+        margin: 0 auto;
+      }
+
+      /* === Benefit Cards Section === */
+      .benefits-container {
+        display: flex;
+        flex-direction: column;
+        gap: 50px; /* Space between cards */
+      }
+
+      /* Card Wrapper to hold Medal + Card */
+      .card-wrapper {
+        position: relative;
+        padding-left: 40px; /* Space for the medal overlap */
+        padding-top: 20px; /* Space for the star on top */
+      }
+
+      /* The Card Itself */
+      .benefit-card {
+        background-color: var(--card-bg);
+        border: 2px solid var(--gold-main); /* Gold Border */
+        border-radius: 15px;
+        padding: 30px 40px 30px 60px; /* Left padding larger for medal space */
+        box-shadow: 0 10px 25px rgba(212, 165, 116, 0.15); /* Soft gold shadow */
+        position: relative;
+      }
+
+      /* Inner Gold Border (Double border effect) */
+      .benefit-card::before {
+        content: '';
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        right: 6px;
+        bottom: 6px;
+        border: 1px solid var(--gold-light);
+        border-radius: 10px;
+        pointer-events: none;
+      }
+
+      /* Top Center Star Decoration */
+      .top-star {
+        position: absolute;
+        top: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 1.5rem;
+        color: var(--gold-main);
+        background-color: var(--bg-color);
+        padding: 0 10px;
+        z-index: 2;
+        text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      /* === The Medal Badge (Left Side) === */
+      .medal-badge {
+        position: absolute;
+        top: 0px; /* Align with top of card */
+        left: 0;
+        width: 110px;
+        height: 130px; /* Increased to accommodate ribbon */
+        z-index: 5; /* Above card */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+      }
+
+      /* Medal Circle with Scalloped Edge */
+      .medal-circle {
+        width: 90px;
+        height: 90px;
+        background: linear-gradient(135deg, #f4e4c1 0%, #d4a574 50%, #c9a063 100%);
+        border-radius: 50%;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 
+          0 8px 20px rgba(0, 0, 0, 0.25),
+          inset 0 -3px 8px rgba(0, 0, 0, 0.2),
+          inset 0 3px 8px rgba(255, 255, 255, 0.4);
+        border: 4px solid #f9f0db;
+      }
+
+      /* Scalloped edge effect using pseudo-elements */
+      .medal-circle::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background: radial-gradient(circle at 50% 0%, transparent 8px, #e6d2a0 8px, #e6d2a0 10px, transparent 10px),
+                    radial-gradient(circle at 100% 50%, transparent 8px, #e6d2a0 8px, #e6d2a0 10px, transparent 10px),
+                    radial-gradient(circle at 50% 100%, transparent 8px, #e6d2a0 8px, #e6d2a0 10px, transparent 10px),
+                    radial-gradient(circle at 0% 50%, transparent 8px, #e6d2a0 8px, #e6d2a0 10px, transparent 10px);
+        z-index: -1;
+      }
+
+      /* Inner Circle with Star */
+      .medal-inner {
+        width: 70px;
+        height: 70px;
+        background: linear-gradient(135deg, #f9f0db 0%, #e6d2a0 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.15);
+        position: relative;
+      }
+
+      /* Embossed Star in Center */
+      .medal-star-center {
+        font-size: 2rem;
+        color: #c9a063;
+        text-shadow: 
+          1px 1px 0px rgba(255, 255, 255, 0.5),
+          -1px -1px 0px rgba(0, 0, 0, 0.2);
+        filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.3));
+      }
+
+      /* Ribbon Tails */
+      .medal-ribbon-tail {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 45px;
+        z-index: -1;
+        display: flex;
+        gap: 5px;
+        justify-content: center;
+      }
+
+      .ribbon-tail-left,
+      .ribbon-tail-right {
+        width: 22px;
+        height: 45px;
+        background: linear-gradient(180deg, #d4a574 0%, #c9a063 100%);
+        position: relative;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+      }
+
+      /* V-cut at bottom of ribbons */
+      .ribbon-tail-left::after,
+      .ribbon-tail-right::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 15px;
+        background: linear-gradient(180deg, #c9a063 0%, #b8925a 100%);
+        clip-path: polygon(0 0, 100% 0, 50% 100%);
+      }
+
+      .medal-content {
+        text-align: center;
+        position: absolute;
+        bottom: 20px;
+        color: #fff;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        z-index: 1;
+      }
+
+      .medal-text {
+        font-size: 0.85rem;
+        font-weight: 700;
+        display: block;
+        line-height: 1.3;
+        font-family: 'Noto Serif JP', serif;
+        color: #4a4a4a;
+        text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+      }
+
+      /* === Card Content === */
+      .card-title {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+        border-bottom: 1px dotted var(--gold-main);
+        padding-bottom: 10px;
+      }
+
+      .card-desc {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+        text-align: justify;
+      }
+
+      /* === Button Style === */
+      .btn-detail {
+        display: block;
+        width: 80%;
+        margin: 0 auto;
+        background-color: var(--btn-color);
+        color: var(--btn-text);
+        text-align: center;
+        padding: 12px 0;
+        border-radius: 30px; /* Fully rounded pill shape */
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        font-size: 1rem;
+      }
+
+      .btn-detail:hover {
+        transform: translateY(-2px);
+        background-color: var(--gold-dark);
+        box-shadow: 0 6px 15px rgba(212, 165, 116, 0.4);
+      }
+
+      /* Footer */
+      footer {
+        text-align: center;
+        margin-top: 80px;
+        padding-bottom: 40px;
+        font-size: 0.9rem;
+        color: #888;
+      }
+
+      /* === Mobile Responsive === */
+      @media (max-width: 600px) {
+        .card-wrapper {
+          padding-left: 0;
+          padding-top: 65px; /* Space for medal on top centered */
+        }
+
+        .medal-badge {
+          left: 50%;
+          transform: translateX(-50%);
+          top: -20px; /* Shift up */
+          width: 90px;
+          height: 110px;
+        }
+
+        .medal-circle {
+          width: 75px;
+          height: 75px;
+        }
+
+        .medal-inner {
+          width: 58px;
+          height: 58px;
+        }
+
+        .medal-star-center {
+          font-size: 1.6rem;
+        }
+
+        .ribbon-tail-left,
+        .ribbon-tail-right {
+          width: 18px;
+          height: 38px;
+        }
+
+        .benefit-card {
+          padding: 50px 20px 30px 20px;
+        }
+
+        h1 {
+          font-size: 1.6rem;
+        }
+
+        .top-star {
+          display: none; /* Hide top star on mobile to avoid clutter with medal */
+        }
+
+        .btn-detail {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body style="color: rgb(77, 77, 77);">
+    <!-- Decorative Corner Elements -->
+    <div class="corner-tl"></div>
+    <div class="corner-tr"></div>
+    <div class="corner-bl"><div class="corner-bl-curve"></div></div>
+    <div class="corner-br"></div>
+
+    <div class="container">
+      <header>
+        <h1><span style="color: rgb(77, 77, 77);">この度はLINE登録してくださり<br></span><span style="color: rgb(77, 77, 77);">ありがとうございます。</span></h1>
+        <div class="intro-text"><span style="color: rgb(77, 77, 77);">
+          お礼として今まで25年間の臨床経験や鍼灸院経営のノウハウを<br></span><span style="color: rgb(77, 77, 77); font-size: 1.1rem;">まとめたレポートを差し上げます。</span></div>
+        <div class="intro-sub"><span style="color: rgb(77, 77, 77);">
+          どれも、これからの時代に対応していける</span></div><div class="intro-sub"><span style="color: rgb(77, 77, 77);">技術的ノウハウも詰め込みましたので全て受け取ってください。</span><span style="color: rgb(128, 128, 128);">
+        </span></div>
+      </header>
+
+      <div class="benefits-container">
+        <!-- Benefit 1 -->
+        <div class="card-wrapper">
+          <div class="top-star"><i class="fa-solid fa-star"></i></div>
+          <div class="medal-badge">
+            <div class="medal-circle">
+              <div class="medal-inner">
+                <i class="fa-solid fa-star medal-star-center"></i>
+              </div>
+            </div>
+            <div class="medal-ribbon-tail">
+              <div class="ribbon-tail-left"></div>
+              <div class="ribbon-tail-right"></div>
+            </div>
+            <div class="medal-content">
+              <span class="medal-text"><br></span>
+            </div>
+          </div>
+          <div class="benefit-card">
+            <h2 class="card-title"><span style="color: rgb(77, 77, 77);">なぜ、既存の美容鍼は「顔の歪み」に対応できないのか？</span></h2>
+            <div class="card-desc"><span style="color: rgb(77, 77, 77);">
+              この特典レポートでは、「治してあげたいのに対応できない」という罪悪感と、今さら整体を学び直すのはちょっと、、。と思っている。それでも技術の極みを求める志高き鍼灸師さんへ向けてお伝えしています。</span><span style="color: rgb(77, 77, 77);">
+              あなたが今、美容鍼技術の向上をしたいと思うなら、このレポートが大きな転機になるかもしれません。ぜひ最後まで読んでください。</span>
+            </div>
+            <a href="https://rebalancefca.github.io/L1/" class="btn-detail">詳しく見る →</a>
+          </div>
+        </div>
+
+        <!-- Benefit 2 -->
+        <div class="card-wrapper">
+          <div class="top-star"><i class="fa-solid fa-star"></i></div>
+          <div class="medal-badge">
+            <div class="medal-circle">
+              <div class="medal-inner">
+                <i class="fa-solid fa-star medal-star-center"></i>
+              </div>
+            </div>
+            <div class="medal-ribbon-tail">
+              <div class="ribbon-tail-left"></div>
+              <div class="ribbon-tail-right"></div>
+            </div>
+            <div class="medal-content">
+              <span class="medal-text"><br></span>
+            </div>
+          </div>
+          <div class="benefit-card">
+            <h2 class="card-title"><span style="color: rgb(77, 77, 77);">リバランス整顔美容鍼技術向上のテクニック</span></h2>
+            <div class="card-desc"><span style="color: rgb(77, 77, 77);">
+              この特典レポートを最後まで読むことで美容鍼の技術向上に役立つ内容を知ることができます。特に「リバランス整顔美容鍼」の技術の一つでもある幹細胞美容鍼の技術は必見です。</span><span style="color: rgb(77, 77, 77);">
+              技術向上を目指している先生は、ぜひ最後まで読んで知識を深めてください。</span>
+            </div>
+            <a href="https://rebalancefca.github.io/L2/" class="btn-detail">詳しく見る →</a>
+          </div>
+        </div>
+
+        <!-- Benefit 3 -->
+        <div class="card-wrapper">
+          <div class="top-star"><i class="fa-solid fa-star"></i></div>
+          <div class="medal-badge">
+            <div class="medal-circle">
+              <div class="medal-inner">
+                <i class="fa-solid fa-star medal-star-center"></i>
+              </div>
+            </div>
+            <div class="medal-ribbon-tail">
+              <div class="ribbon-tail-left"></div>
+              <div class="ribbon-tail-right"></div>
+            </div>
+            <div class="medal-content">
+              <span class="medal-text"><br></span>
+            </div>
+          </div>
+          <div class="benefit-card">
+            <h2 class="card-title"><span style="color: rgb(77, 77, 77);">理想の売上を叶え鍼灸院経営を安定化させるメニューの特徴とは？</span></h2>
+            <div class="card-desc"><span style="color: rgb(77, 77, 77);">あなたは理想のメニューを構築するために、多くの鍼灸院が共通して陥っている「７つの落とし穴」があることはご存知でしたか？一体それは何なのか、、、ぜひ最後まで読んで落とし穴に陥らないようにしてください。</span></div><div class="card-desc"><span style="color: rgb(77, 77, 77); font-family: &quot;Shippori Mincho&quot;, &quot;Noto Serif JP&quot;, serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 251, 245); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;">「今の働き方でこの先あと何年続けていけるのか？」という不安も払拭できると思います。</span>
+
+            </div>
+            <a href="https://rebalancefca.github.io/L3/" class="btn-detail">詳しく見る →</a>
+          </div>
+        </div>
+      </div>
+
+      <footer>© リバランス整顔美容鍼</footer>
+    </div>
+  
+
+</body></html>
